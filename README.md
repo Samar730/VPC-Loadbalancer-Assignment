@@ -170,3 +170,17 @@ A target group was created to define where the Application Load Balancer will fo
 The private EC2 instances were registered as targets so the ALB can distribute traffic across both Availability Zones.
 
 ![Registered Targets](images/15-targets-healthy.png)
+
+### Step 11: Application Load Balancer
+
+An Application Load Balancer (ALB) was deployed to distribute incoming traffic across private EC2 instances running the application. The ALB serves as the public entry point to the architecture while keeping application instances isolated within private subnets.
+
+**Configuration details:**
+- Load balancer type: **Application**
+- Scheme: **Internet-facing**
+- Deployed across public subnets in multiple Availability Zones
+- Listener configured on **HTTP (port 80)**
+- Listener forwards traffic to the private EC2 target group (`TG-Private-Nginx`)
+- Health checks ensure traffic is only sent to healthy targets
+
+![Application Load Balancer](images/16-application-load-balancer.png)
