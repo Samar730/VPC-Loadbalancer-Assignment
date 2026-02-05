@@ -184,3 +184,17 @@ An Application Load Balancer (ALB) was deployed to distribute incoming traffic a
 - Health checks ensure traffic is only sent to healthy targets
 
 ![Application Load Balancer](images/16-application-load-balancer.png)
+
+### Step 12: Application Load Balancer Validation
+
+Before configuring DNS and HTTPS, the Application Load Balancer was validated using its AWS-provided DNS name. This confirms that the load balancer, target group, and private EC2 instances are correctly integrated.
+
+**Validation steps performed:**
+- Accessed the ALB DNS name in a web browser
+- Observed responses from different private EC2 instances on page refresh
+- Confirmed successful traffic forwarding from the ALB to the target group
+
+The responses below show traffic being served by different private EC2 instances, confirming load balancing across Availability Zones.
+
+![ALB Validation Instance A](images/17-alb-validation-az-a.png)
+![ALB Validation Instance B](images/18-alb-validation-az-b.png)
