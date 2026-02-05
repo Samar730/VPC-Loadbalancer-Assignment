@@ -14,3 +14,13 @@ The diagram below illustrates the overall AWS architecture deployed in this proj
 
 ![Architecture Diagram](images/architecture-diagram.png)
 
+## Implementation Steps
+
+### Step 1: VPC Creation
+
+A Virtual Private Cloud (VPC) provides an isolated networking environment within AWS, similar to a traditional on-premises network. All resources in this project are deployed within this VPC.
+
+**Configuration details:**
+- A custom VPC was created with an IPv4 CIDR block of `10.0.0.0/16`
+- This CIDR range provides sufficient address space for multiple subnets across Availability Zones
+- The VPC serves as the foundational networking layer for all subsequent components
