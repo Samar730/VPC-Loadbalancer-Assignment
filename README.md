@@ -129,3 +129,27 @@ Elastic Compute Cloud (EC2) instances were deployed to host the application work
 - Eliminates the need for exposing private instances directly to the public internet
 
 ![Bastion Host](images/11-bastion-host.png)
+
+### Step 8: Bastion Host Access
+
+A bastion host was used to provide secure administrative access to resources inside the private subnets. This ensures that no private EC2 instances are directly exposed to the public internet.
+
+**Actions performed:**
+- Established an SSH connection to the bastion host using its public IPv4 address
+- Access was restricted to a trusted IP address via the bastion security group
+- The bastion host acts as a controlled entry point into the VPC
+
+![SSH into Bastion Host](images/12-bastion-ssh.png)
+
+### Step 9: Private EC2 Access & Application Validation
+
+After accessing the VPC via the bastion host, a private EC2 instance was accessed using its private IP address. This step validates internal network connectivity, routing, and security controls within the VPC.
+
+**Validation steps performed:**
+- Initiated an SSH connection to the private EC2 instance from the bastion host
+- Confirmed the instance is deployed in a private subnet and does not have a public IP address
+- Verified that the NGINX web server is running on the private EC2 instance
+
+The following command was executed on the private EC2 instance to validate application availability:
+
+![SSH into Private EC2 instance](images/13-private-ec2-curl.png) 
