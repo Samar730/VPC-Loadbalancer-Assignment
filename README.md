@@ -107,3 +107,25 @@ Security Groups act as stateful virtual firewalls that control inbound and outbo
 - Eliminates the need for public SSH access on private resources
 
 ![Bastion Host Security Group](images/09-sg-bastion.png)
+
+### Step 7: EC2 Instances
+
+Elastic Compute Cloud (EC2) instances were deployed to host the application workload and provide controlled administrative access. The architecture uses private EC2 instances for application services and a bastion host in a public subnet for secure access.
+
+**Private EC2 instances (Application layer):**
+- Two EC2 instances were launched in private subnets across different Availability Zones
+- Instances do not have public IP addresses, ensuring they are not directly reachable from the internet
+- Each instance runs an NGINX web server installed via user data
+- Security is enforced using a dedicated security group that only allows:
+  - HTTP traffic from the Application Load Balancer
+  - SSH access from the Bastion Host
+
+![Private EC2 Instances](images/10-private-ec2-instances.png)
+
+**Bastion host:**
+- A single EC2 instance was launched in a public subnet
+- Assigned a public IPv4 address to allow SSH access from a trusted IP
+- Used as a secure jump host to access private EC2 instances
+- Eliminates the need for exposing private instances directly to the public internet
+
+![Bastion Host](images/11-bastion-host.png)
