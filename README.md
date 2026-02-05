@@ -207,6 +207,8 @@ An ACM certificate was requested for the custom domain and wildcard subdomain an
 
 The HTTPS listener forwards encrypted traffic to the private EC2 target group running NGINX.
 
+The HTTP (80) listener was configured to redirect all requests to HTTPS (443) using a **301 Permanent Redirect**, ensuring all client traffic is encrypted in transit by default.
+
 An Alias A record was then created in Route 53 to map the custom domain to the Application Load Balancer DNS name. This allows users to access the application securely using HTTPS without exposing backend instances.
 
 Finally, the setup was verified by accessing the application via the custom domain and observing successful load balancing between private EC2 instances.
@@ -214,6 +216,8 @@ Finally, the setup was verified by accessing the application via the custom doma
 ![ACM Certificate Issued](images/19-acm-certificate.png)
 
 ![ALB HTTPS Listener](images/20-alb-https-listener.png)
+
+![HTTP to HTTPS Redirect Rule](images/24-http-to-https-redirect.png)
 
 ![Route 53 Alias Record](images/21-route53-alias.png)
 
@@ -227,4 +231,5 @@ Finally, the setup was verified by accessing the application via the custom doma
 - Confirmed outbound internet access from private subnets through a Regional NAT Gateway.
 - Validated Application Load Balancer routing traffic across multiple Availability Zones.
 - Verified HTTPS access using an ACM-issued TLS certificate.
+- Confirmed HTTP (port 80) requests are redirected to HTTPS (port 443) using a 301 redirect.
 - Confirmed DNS resolution via Route 53 Alias record pointing to the ALB.
