@@ -153,3 +153,20 @@ After accessing the VPC via the bastion host, a private EC2 instance was accesse
 The following command was executed on the private EC2 instance to validate application availability:
 
 ![SSH into Private EC2 instance](images/13-private-ec2-curl.png) 
+
+### Step 10: Target Group Configuration
+
+A target group was created to define where the Application Load Balancer will forward traffic. The target group registers the private EC2 instances running NGINX and performs health checks to ensure traffic is only sent to healthy instances.
+
+**Configuration details:**
+- Target type: **Instance**
+- Protocol/Port: **HTTP: 80**
+- Health check protocol: **HTTP**
+- Health check path: `/`
+- Targets: **2 private EC2 instances**, one in each Availability Zone
+
+![Target Group Details](images/14-target-group-details.png)
+
+The private EC2 instances were registered as targets so the ALB can distribute traffic across both Availability Zones.
+
+![Registered Targets](images/15-targets-healthy.png)
