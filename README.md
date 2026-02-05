@@ -64,3 +64,21 @@ A NAT Gateway allows instances in private subnets to initiate outbound connectio
 - Private subnets will later route outbound traffic to the NAT Gateway
 
 ![Regional NAT Gateway](images/04-regional-nat-gateway.png)
+
+### Step 5: Route Tables
+
+Route tables control how network traffic is directed within the VPC. Separate route tables were configured for public and private subnets to enforce secure and predictable traffic flow.
+
+**Public route table configuration:**
+- Associated with public subnets in each Availability Zone
+- Contains a default route (`0.0.0.0/0`) pointing to the Internet Gateway
+- Enables inbound and outbound internet access for public-facing resources
+
+![Public Route Table](images/05-public-route-table.png)
+
+**Private route table configuration:**
+- Associated with private subnets in each Availability Zone
+- Contains a default route (`0.0.0.0/0`) pointing to the Regional NAT Gateway
+- Allows private instances to initiate outbound internet connections while remaining unreachable from the public internet
+
+![Private Route Table](images/06-private-route-table.png)
