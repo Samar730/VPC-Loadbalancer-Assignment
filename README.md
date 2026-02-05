@@ -24,3 +24,5 @@ A Virtual Private Cloud (VPC) provides an isolated networking environment within
 - A custom VPC was created with an IPv4 CIDR block of `10.0.0.0/16`
 - This CIDR range provides sufficient address space for multiple subnets across Availability Zones
 - The VPC serves as the foundational networking layer for all subsequent components
+
+![VPC Creation](images/01-vpc-created.png)
