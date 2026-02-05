@@ -220,3 +220,11 @@ Finally, the setup was verified by accessing the application via the custom doma
 ![HTTPS Access via Custom Domain](images/22-https-browser.png)
 
 ![HTTPS Access via Custom Domain](images/23-https-browser.png)
+
+## Verification & Results
+
+- Verified connectivity to private EC2 instances via a Bastion Host.
+- Confirmed outbound internet access from private subnets through a Regional NAT Gateway.
+- Validated Application Load Balancer routing traffic across multiple Availability Zones.
+- Verified HTTPS access using an ACM-issued TLS certificate.
+- Confirmed DNS resolution via Route 53 Alias record pointing to the ALB.
