@@ -26,3 +26,17 @@ A Virtual Private Cloud (VPC) provides an isolated networking environment within
 - The VPC serves as the foundational networking layer for all subsequent components
 
 ![VPC Creation](images/01-vpc-created.png)
+
+### Step 2: Subnet Creation
+
+Subnets were created to logically divide the VPC into public and private network segments across two Availability Zones. This enables high availability, fault tolerance, and controlled exposure to the internet.
+
+**Configuration details:**
+- Four subnets were created across two Availability Zones:
+  - Two public subnets (one per AZ) for internet-facing resources
+  - Two private subnets (one per AZ) for application compute resources
+- Each subnet was assigned a `/24` IPv4 CIDR block for clear IP segmentation
+- Public and private subnets were distributed evenly across Availability Zones to support high availability
+- Private subnets do not assign public IP addresses to resources by default
+
+![Subnet Creation](images/02-subnets-created.png)
