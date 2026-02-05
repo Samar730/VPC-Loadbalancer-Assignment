@@ -82,3 +82,28 @@ Route tables control how network traffic is directed within the VPC. Separate ro
 - Allows private instances to initiate outbound internet connections while remaining unreachable from the public internet
 
 ![Private Route Table](images/06-private-route-table.png)
+
+### Step 6: Security Groups
+
+Security Groups act as stateful virtual firewalls that control inbound and outbound traffic to AWS resources. Separate security groups were created for each layer of the architecture to enforce the principle of least privilege.
+
+**Private EC2 Security Group:**
+- Allows inbound SSH (port 22) traffic **only** from the Bastion Host security group
+- Allows inbound HTTP (port 80) traffic **only** from the Application Load Balancer security group
+- Prevents any direct inbound access from the public internet
+
+![Private EC2 Security Group](images/07-sg-private-ec2.png)
+
+**Application Load Balancer Security Group:**
+- Allows inbound HTTP (port 80) traffic from the public internet (`0.0.0.0/0`)
+- Acts as the single public entry point for application traffic
+- Forwards traffic securely to private EC2 instances
+
+![ALB Security Group](images/08-sg-alb.png)
+
+**Bastion Host Security Group:**
+- Allows inbound SSH (port 22) traffic **only** from a trusted IP address
+- Provides controlled administrative access to private EC2 instances
+- Eliminates the need for public SSH access on private resources
+
+![Bastion Host Security Group](images/09-sg-bastion.png)
