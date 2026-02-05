@@ -51,3 +51,16 @@ An Internet Gateway (IGW) enables communication between resources in the VPC and
 - Only public subnets will later be associated with route tables that forward traffic to the IGW
 
 ![Internet Gateway Attached](images/03-internet-gateway.png)
+
+### Step 4: Regional NAT Gateway
+
+A NAT Gateway allows instances in private subnets to initiate outbound connections to the internet while remaining unreachable from inbound internet traffic. In this project, a **Regional NAT Gateway** was used to improve availability and simplify multi-AZ network design.
+
+**Configuration details:**
+- A Regional NAT Gateway was created within the VPC
+- Regional mode allows the NAT Gateway to automatically scale across Availability Zones
+- The NAT Gateway was configured as a **public** NAT to provide internet egress for private subnets
+- Elastic IP addresses were allocated automatically by AWS for simplified management
+- Private subnets will later route outbound traffic to the NAT Gateway
+
+![Regional NAT Gateway](images/04-regional-nat-gateway.png)
