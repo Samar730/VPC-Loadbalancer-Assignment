@@ -40,3 +40,14 @@ Subnets were created to logically divide the VPC into public and private network
 - Private subnets do not assign public IP addresses to resources by default
 
 ![Subnet Creation](images/02-subnets-created.png)
+
+### Step 3: Internet Gateway
+
+An Internet Gateway (IGW) enables communication between resources in the VPC and the public internet. It is required for any public subnet that needs inbound or outbound internet access.
+
+**Configuration details:**
+- An Internet Gateway was created and attached to the custom VPC
+- The IGW enables public subnets to route traffic to and from the internet
+- Only public subnets will later be associated with route tables that forward traffic to the IGW
+
+![Internet Gateway Attached](images/03-internet-gateway.png)
