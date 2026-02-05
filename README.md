@@ -199,7 +199,7 @@ The responses below show traffic being served by different private EC2 instances
 ![ALB Validation Instance A](images/17-alb-validation-az-a.png)
 ![ALB Validation Instance B](images/18-alb-validation-az-b.png)
 
-### Step X: HTTPS, TLS, and Custom Domain Configuration
+### Step 13: HTTPS, TLS, and Custom Domain Configuration
 
 To secure inbound traffic, HTTPS was configured using AWS Certificate Manager (ACM) and Amazon Route 53.
 
