@@ -198,3 +198,25 @@ The responses below show traffic being served by different private EC2 instances
 
 ![ALB Validation Instance A](images/17-alb-validation-az-a.png)
 ![ALB Validation Instance B](images/18-alb-validation-az-b.png)
+
+### Step X: HTTPS, TLS, and Custom Domain Configuration
+
+To secure inbound traffic, HTTPS was configured using AWS Certificate Manager (ACM) and Amazon Route 53.
+
+An ACM certificate was requested for the custom domain and wildcard subdomain and validated using DNS validation. Once the certificate status was issued, it was attached to the Application Load Balancer as an HTTPS (443) listener.
+
+The HTTPS listener forwards encrypted traffic to the private EC2 target group running NGINX.
+
+An Alias A record was then created in Route 53 to map the custom domain to the Application Load Balancer DNS name. This allows users to access the application securely using HTTPS without exposing backend instances.
+
+Finally, the setup was verified by accessing the application via the custom domain and observing successful load balancing between private EC2 instances.
+
+![ACM Certificate Issued](images/19-acm-certificate.png)
+
+![ALB HTTPS Listener](images/20-alb-https-listener.png)
+
+![Route 53 Alias Record](images/21-route53-alias.png)
+
+![HTTPS Access via Custom Domain](images/22-https-browser.png)
+
+![HTTPS Access via Custom Domain](images/23-https-browser.png)
